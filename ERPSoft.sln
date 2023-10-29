@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERPSoft.Web", "ERPSoft.Web\ERPSoft.Web.csproj", "{FC7CA5E2-5FC3-4436-98DE-25B5EAEBC86A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERPSoft.DATA", "ERPSoft.DATA\ERPSoft.DATA.csproj", "{FB64021A-BEB6-44C4-A405-7D596E5B8F62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC7CA5E2-5FC3-4436-98DE-25B5EAEBC86A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC7CA5E2-5FC3-4436-98DE-25B5EAEBC86A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC7CA5E2-5FC3-4436-98DE-25B5EAEBC86A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC7CA5E2-5FC3-4436-98DE-25B5EAEBC86A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB64021A-BEB6-44C4-A405-7D596E5B8F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB64021A-BEB6-44C4-A405-7D596E5B8F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB64021A-BEB6-44C4-A405-7D596E5B8F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB64021A-BEB6-44C4-A405-7D596E5B8F62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {729F4914-318E-4BB6-9D59-EC4BBBDDE9C9}
+	EndGlobalSection
+EndGlobal

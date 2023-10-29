@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ERPSoft.DATA.Models.OrdemServico>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ordem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeFornecedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFormatada)
+            </th>
+            <th>
+                Email do Fornecedor
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ordem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeFornecedor)
+            </td>
+            <td>
+                @string.Format("{0:C}", item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFormatada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdOrdemFornecedorNavigation.Email)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

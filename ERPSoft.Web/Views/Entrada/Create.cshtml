@@ -1,0 +1,75 @@
+﻿@using ERPSoft.DATA.Models
+@model ERPSoft.DATA.Models.Entrada
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Entrada</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NotaFiscal" class="control-label"></label>
+                <input asp-for="NotaFiscal" class="form-control" />
+                <span asp-validation-for="NotaFiscal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeDeposito" class="control-label"></label>
+                <input asp-for="NomeDeposito" class="form-control" />
+                <span asp-validation-for="NomeDeposito" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCadastro" class="control-label"></label>
+                <input asp-for="DataCadastro" class="form-control" />
+                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEntradaFornecedor" class="control-label"></label>
+                <select asp-for="IdEntradaFornecedor" class="form-control">
+                    <option value="">Selecione um fornecedor</option>
+                    @if (ViewBag.Fornecedores != null)
+                    {
+                        @foreach (var fornecedor in (ViewBag.Fornecedores as List<Fornecedor>))
+                        {
+                            <option value="@fornecedor.Id">@fornecedor.Nome</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEntradaProduto" class="control-label"></label>
+                <select asp-for="IdEntradaProduto" class="form-control">
+                    <option value="">Selecione o Produto</option>
+                    @if (ViewBag.Produtos != null)
+                    {
+                        @foreach (var fornecedor in (ViewBag.Produtos as List<Produto>))
+                        {
+                            <option value="@fornecedor.Id">@fornecedor.Nome</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntradaQtda" class="control-label"></label>
+                <input asp-for="EntradaQtda" class="form-control" />
+                <span asp-validation-for="EntradaQtda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

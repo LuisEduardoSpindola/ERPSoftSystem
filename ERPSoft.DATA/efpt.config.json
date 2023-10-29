@@ -1,0 +1,73 @@
+﻿{
+   "CodeGenerationMode": 3,
+   "ContextClassName": "ERPSoftDbContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "ERPSoft.DATA",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Entrada]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Fornecedor]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[OrdemCompra]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[OrdemServico]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PedidoMaterial]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PedidoServico]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Produto]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Saida]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Servicos]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "luis_eduardo.ERPSoft.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

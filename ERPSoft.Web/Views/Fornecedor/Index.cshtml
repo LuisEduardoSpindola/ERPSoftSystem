@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ERPSoft.DATA.Models.Fornecedor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="d-flex justify-content-between align-items-center">
+    <h3>Fornecedores</h3>
+    <a asp-action="Create" class="bi bi-plus-circle btn btn-outline-primary">Adicionar</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cnpj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InscEstadual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InscMunicipal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cnpj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InscEstadual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InscMunicipal)
+            </td>
+            <td>
+                <a asp-action="Edit" class="bi bi-trash btn btn-outline-warning" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" class="bi bi-pencil-square btn btn-outline-danger" asp-route-id="@item.Id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

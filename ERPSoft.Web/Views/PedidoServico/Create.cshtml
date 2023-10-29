@@ -1,0 +1,68 @@
+﻿@using ERPSoft.DATA.Models;
+@model ERPSoft.DATA.Models.PedidoServico
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PedidoServico</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdPedidoSservico" class="control-label"></label>
+                <select asp-for="IdPedidoSservico" class="form-control">
+                    <option value="">Selecione o Produto</option>
+                    @if (ViewBag.Servicos != null)
+                    {
+                        @foreach (var produto in (ViewBag.Servicos as List<Servicos>))
+                        {
+                            <option value="@produto.Id">@produto.Nome</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdPedidoSfornecedor" class="control-label"></label>
+                <select asp-for="IdPedidoSfornecedor" class="form-control">
+                    <option value="">Selecione o Fornecedor</option>
+                    @if (ViewBag.Fornecedores != null)
+                    {
+                        @foreach (var produto in (ViewBag.Fornecedores as List<Fornecedor>))
+                        {
+                            <option value="@produto.Id">@produto.Nome</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observacao" class="control-label"></label>
+                <input asp-for="Observacao" class="form-control" />
+                <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusServico" hidden class="control-label"></label>
+                <select asp-for="StatusServico" hidden class="form-select" aria-label="Default select example">
+                    <option value="Aguardando">Aguardando</option>
+                    <option value="Conferencia">Conferência</option>
+                    <option value="Concluida">Concluida</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

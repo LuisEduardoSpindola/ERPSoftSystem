@@ -1,0 +1,83 @@
+﻿@model ERPSoft.DATA.Models.Produto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Cadastrar Produto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label"></label>
+                <input asp-for="Foto" class="form-control"/>
+                <span asp-validation-for="Foto" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Ean" class="control-label"></label>
+                <input asp-for="Ean" class="form-control" />
+                <span asp-validation-for="Ean" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Preco" class="control-label"></label>
+                <input asp-for="Preco" id="Preco"  class="form-control" />
+                <span asp-validation-for="Preco" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="EstoqueMin" class="control-label"></label>
+                <input asp-for="EstoqueMin" class="form-control" />
+                <span asp-validation-for="EstoqueMin" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="EstoqueAtual" class="control-label"></label>
+                <input asp-for="EstoqueAtual" class="form-control" />
+                <span asp-validation-for="EstoqueAtual" class="text-danger"></span>
+            </div>
+             
+            <div class="form-group">
+                <label asp-for="Unidade" class="control-label"></label>
+                <select asp-for="Unidade" class="form-select" aria-label="Default select example">
+                    <option value="">Selecione a Unidade</option>
+                    <option value="1">KG</option>
+                    <option value="2">Litro</option>
+                    <option value="3">UNIDADE</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EstoqueIdeal" class="control-label"></label>
+                <input asp-for="EstoqueIdeal" class="form-control bi bi-plus-circle" />
+                <span asp-validation-for="EstoqueIdeal" class="text-danger"></span>
+            </div>
+            <br></br>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-primary" /> | <a asp-action="Index" class="bi bi-skip-backward-fill btn btn-outline-primary"> Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+
+}
