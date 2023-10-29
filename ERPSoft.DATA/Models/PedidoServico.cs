@@ -47,11 +47,10 @@ public partial class PedidoServico
     [Key]
     public int Id { get; set; }
 
-    [Column("IdPedidoSServico")]
-    public int IdPedidoSservico { get; set; }
-
     [Column("IdPedidoSFornecedor")]
     public int IdPedidoSfornecedor { get; set; }
+
+    public int IdPedidoSservico { get; set; }
 
     [ForeignKey("IdPedidoSfornecedor")]
     [InverseProperty("PedidoServico")]

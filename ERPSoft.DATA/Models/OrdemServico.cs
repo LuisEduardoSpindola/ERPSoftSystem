@@ -28,7 +28,7 @@ public partial class OrdemServico
     [StringLength(10)]
     public string DataFormatada { get; set; }
 
-    public int? Ordem { get; set; }
+    public int Ordem { get; set; }
 
     [Key]
     public int Id { get; set; }

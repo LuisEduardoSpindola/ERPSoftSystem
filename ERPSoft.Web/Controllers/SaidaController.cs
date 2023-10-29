@@ -1,6 +1,10 @@
 ﻿using ERPSoft.DATA.Interfaces;
 using ERPSoft.DATA.Models;
 using ERPSoft.DATA.Repositories;
+using ERPSoft.Web.Areas.Identity.Data;
+using ERPSoft.Web.Constants;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,11 +15,13 @@ namespace ERPSoft.Web.Controllers
         private readonly ISaida _repositorySaida;
         private readonly IProduto _repositoryProduto;
         private readonly IFornecedor _repositoryFornecedor;
-        public SaidaController(ISaida repositorySaida, IProduto repositoryProduto, IFornecedor repositoryFornecedor)
+        private readonly UserManager<Usuario> _userManager;
+        public SaidaController(ISaida repositorySaida, IProduto repositoryProduto, IFornecedor repositoryFornecedor, UserManager<Usuario> userManager)
         {
             _repositorySaida = repositorySaida;
             _repositoryProduto = repositoryProduto;
             _repositoryFornecedor = repositoryFornecedor;
+            _userManager = userManager;
         }
 
         //--------- Create
@@ -36,6 +42,11 @@ namespace ERPSoft.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                saida.Usuario = _userManager.GetUserAsync(User).Result.Nome;
+                saida.Departamento = _userManager.GetUserAsync(User).Result.Departamento;
+                saida.EstoqueQtde = saida.EstoqueQtde - saida.EstoqueSaida;
+                saida.EstoqueQtde--;
+                saida.DataFormatada = saida.Data.ToString("dd/mm/yyyy");
                 _repositorySaida.Create(saida);
                 return RedirectToAction("Index");
             }
@@ -47,6 +58,7 @@ namespace ERPSoft.Web.Controllers
 
         //--------- Read
 
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Index()
         {
             var saidas = _repositorySaida.GetAll();
@@ -106,27 +118,5 @@ namespace ERPSoft.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Details()
-        {
-            var entradas = _repositorySaida.GetAll();
-            foreach (var entrada in entradas)
-            {
-                if (entrada.IdSaidaFornecedor != null)
-                {
-                    var fornecedor = _repositoryFornecedor.GetById(entrada.IdSaidaFornecedor);
-                    entrada.NomeFornecedor = fornecedor?.Nome;
-                    entrada.Data.ToString("dd/MM/yyyy");
-                }
-
-                if (entrada.IdSaidaProduto != null)
-                {
-                    var produto = _repositoryProduto.GetById(entrada.IdSaidaProduto);
-                    entrada.NomeProduto = produto?.Nome;
-                    entrada.DataFormatada = entrada.Data.ToString("dd/MM/yyyy");
-                }
-            }
-
-            return View(entradas);
-        }
     }
 }

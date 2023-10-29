@@ -5,9 +5,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Saida</h4>
+<h4>Cadastrar Saida</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,21 +15,6 @@
                 <label asp-for="EstoqueSaida" class="control-label"></label>
                 <input asp-for="EstoqueSaida" class="form-control" />
                 <span asp-validation-for="EstoqueSaida" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EstoqueQtde" class="control-label"></label>
-                <input asp-for="EstoqueQtde" class="form-control" />
-                <span asp-validation-for="EstoqueQtde" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Usuario" class="control-label"></label>
-                <input asp-for="Usuario" class="form-control" />
-                <span asp-validation-for="Usuario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Departamento" class="control-label"></label>
-                <input asp-for="Departamento" class="form-control" />
-                <span asp-validation-for="Departamento" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Data" class="control-label"></label>
@@ -64,16 +47,14 @@
                     }
                 </select>
             </div>
+            <br></br>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-outline-primary" /> | <a asp-action="Index" class="bi bi-skip-backward-fill btn btn-outline-primary"> Voltar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

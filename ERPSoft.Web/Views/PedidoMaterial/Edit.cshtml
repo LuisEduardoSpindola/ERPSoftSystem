@@ -4,13 +4,10 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<h1>Edit</h1>
-
-<h4>PedidoMaterial</h4>
+<h4>Editar Pedido de Material</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input asp-for="Cod" name="Cod" value="@Model.Cod" hidden class="form-control" />
@@ -59,16 +56,14 @@
                 <input asp-for="Qtda" class="form-control" />
                 <span asp-validation-for="Qtda" class="text-danger"></span>
             </div>
+            <br></br>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-outline-warning" /> | <a asp-action="Index" class="bi bi-skip-backward-fill btn btn-outline-primary"> Voltar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

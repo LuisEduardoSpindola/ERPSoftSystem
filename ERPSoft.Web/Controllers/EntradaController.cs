@@ -1,6 +1,8 @@
 ﻿using ERPSoft.DATA.Interfaces;
 using ERPSoft.DATA.Models;
 using ERPSoft.DATA.Repositories;
+using ERPSoft.Web.Constants;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +21,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Create
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Create()
         {
             var fornecedores = _repositoryFornecedor.GetAll();
@@ -46,7 +48,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Read
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Index()
         {
             var entradas = _repositoryEntrada.GetAll();
@@ -72,8 +74,8 @@ namespace ERPSoft.Web.Controllers
 
 
         //--------- Update
-
-        public ActionResult Edit(int id)
+        [Authorize(Roles = Roles.Usuario)]
+        public IActionResult Edit(int id)
         {
             var fornecedores = _repositoryFornecedor.GetAll();
             ViewBag.Fornecedores = fornecedores;
@@ -101,7 +103,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Delete
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Delete(int id)
         {
             _repositoryEntrada.DeleteById(id);

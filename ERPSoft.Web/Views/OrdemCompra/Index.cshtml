@@ -4,11 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="d-flex justify-content-between align-items-center">
+    <h3>Pedidos Internos</h3>
+    <a asp-action="Create" class="bi bi-plus-circle btn btn-outline-primary">Adicionar</a>
+</div>
+<br></br>
 <table class="table">
     <thead>
         <tr>
@@ -19,22 +19,17 @@
                 @Html.DisplayNameFor(model => model.NomeFornecedor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdOrdemFornecedorNavigation)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DataFormatada)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Qtda)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Valor)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Total)
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.IdOrdemPedidoMaterialNavigation)
+                Status
             </th>
             <th></th>
         </tr>
@@ -55,16 +50,15 @@
                 @Html.DisplayFor(modelItem => item.Qtda)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Valor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total)
+                    @string.Format("{0:C}", item.Total)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdOrdemPedidoMaterialNavigation.StatusMaterial)
             </td>
             <td>
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <td style="vertical-align: middle;">
+                    <a asp-action="Delete" class="bi bi-trash btn btn-outline-danger" asp-route-id="@item.Id">Deletar</a>
+                </td>
             </td>
         </tr>
 }

@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using ERPSoft.DATA.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace ERPSoft.DATA.Models;
@@ -66,15 +67,15 @@ public partial class ERPSoftDbContext : DbContext
 
             entity.HasOne(d => d.IdOrdemFornecedorNavigation)
                 .WithMany(p => p.OrdemCompra)
-                .HasForeignKey(d => d.IdOrdemFornecedor) // Chave estrangeira para Fornecedor
+                .HasForeignKey(d => d.IdOrdemFornecedor)
                 .HasConstraintName("FKOrdemCompraFornecedor")
-                .OnDelete(DeleteBehavior.Cascade); // Defina o comportamento de exclusão conforme necessário.
+                .OnDelete(DeleteBehavior.Cascade);
 
             entity.HasOne(d => d.IdOrdemPedidoMaterialNavigation)
                 .WithMany(p => p.OrdemCompra)
-                .HasForeignKey(d => d.IdOrdemPedidoMaterial) // Chave estrangeira para PedidoMaterial
+                .HasForeignKey(d => d.IdOrdemPedidoMaterial)
                 .HasConstraintName("FKOrdemPedidoMaterial")
-                .OnDelete(DeleteBehavior.Cascade); // Defina o comportamento de exclusão conforme necessário.
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
 
@@ -88,15 +89,15 @@ public partial class ERPSoftDbContext : DbContext
 
             entity.HasOne(d => d.IdOrdemFornecedorNavigation)
                 .WithMany(p => p.OrdemServico)
-                .HasForeignKey(d => d.IdOrdemFornecedor) // Chave estrangeira para Fornecedor
+                .HasForeignKey(d => d.IdOrdemFornecedor)
                 .HasConstraintName("FKOrdemPedidoFornecedor")
-                .OnDelete(DeleteBehavior.Cascade); // Defina o comportamento de exclusão conforme necessário.
+                .OnDelete(DeleteBehavior.Cascade);
 
             entity.HasOne(d => d.IdOrdemPedidoServicoNavigation)
                 .WithMany(p => p.OrdemServico)
-                .HasForeignKey(d => d.IdOrdemPedidoServico) // Chave estrangeira para PedidoMaterial
+                .HasForeignKey(d => d.IdOrdemPedidoServico)
                 .HasConstraintName("FKOrdemPedidoServico")
-                .OnDelete(DeleteBehavior.Cascade); // Defina o comportamento de exclusão conforme necessário.
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<PedidoMaterial>(entity =>
@@ -116,7 +117,7 @@ public partial class ERPSoftDbContext : DbContext
             entity.Property(e => e.DataFormatada).IsFixedLength();
 
             entity.HasOne(pedidoServico => pedidoServico.IdPedidoSfornecedorNavigation)
-                .WithMany(servico => servico.PedidoServico)
+                .WithMany(forbecedor => forbecedor.PedidoServico)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FKPedidoSfornecedor");
 
@@ -145,10 +146,7 @@ public partial class ERPSoftDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__Servicos__3214EC078EB73E3B");
 
-            entity.HasOne(d => d.IdFornecedorNavigation)
-                .WithMany(p => p.Servicos)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FKFornecedor");
+
         });
 
         modelBuilder.Entity<Fornecedor>(entity =>

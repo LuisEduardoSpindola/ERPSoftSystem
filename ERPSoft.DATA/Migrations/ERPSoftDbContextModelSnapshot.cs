@@ -569,7 +569,7 @@ namespace ERPSoft.DATA.Migrations
                         .IsRequired()
                         .HasConstraintName("FKOrdemPedidoFornecedor");
 
-                    b.HasOne("ERPSoft.DATA.Models.Servicos", "IdOrdemPedidoServicoNavigation")
+                    b.HasOne("ERPSoft.DATA.Models.PedidoServico", "IdOrdemPedidoServicoNavigation")
                         .WithMany("OrdemServico")
                         .HasForeignKey("IdOrdemPedidoServico")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -667,6 +667,11 @@ namespace ERPSoft.DATA.Migrations
                     b.Navigation("OrdemCompra");
                 });
 
+            modelBuilder.Entity("ERPSoft.DATA.Models.PedidoServico", b =>
+                {
+                    b.Navigation("OrdemServico");
+                });
+
             modelBuilder.Entity("ERPSoft.DATA.Models.Produto", b =>
                 {
                     b.Navigation("Entrada");
@@ -678,8 +683,6 @@ namespace ERPSoft.DATA.Migrations
 
             modelBuilder.Entity("ERPSoft.DATA.Models.Servicos", b =>
                 {
-                    b.Navigation("OrdemServico");
-
                     b.Navigation("PedidoServico");
                 });
 #pragma warning restore 612, 618

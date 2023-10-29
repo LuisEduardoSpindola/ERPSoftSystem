@@ -2,6 +2,8 @@
 using ERPSoft.DATA.Models;
 using ERPSoft.DATA.Repositories;
 using ERPSoft.Web.Areas.Identity.Data;
+using ERPSoft.Web.Constants;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +24,7 @@ namespace ERPSoft.Web.Controllers
 
         //--------- Create
 
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Create()
         {
             var produtos = _repositoryProduto.GetAll();
@@ -54,7 +57,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Read
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Index()
         {
             var pedidoMateriais = _repositoryPedidoMaterial.GetAll();
@@ -73,7 +76,7 @@ namespace ERPSoft.Web.Controllers
 
 
         //--------- Update
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Edit(int id)
         {
             var produtos = _repositoryProduto.GetAll();
@@ -103,27 +106,11 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Delete
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Delete(int id)
         {
             _repositoryPedidoMaterial.DeleteById(id);
             return RedirectToAction("Index");
-        }
-
-        public IActionResult Details()
-        {
-            var pedidoMateriais = _repositoryPedidoMaterial.GetAll();
-            foreach (var pedidoMaterial in pedidoMateriais)
-            {
-                if (pedidoMaterial.IdPedidoMproduto != null)
-                {
-                    var produto = _repositoryProduto.GetById(pedidoMaterial.IdPedidoMproduto);
-                    pedidoMaterial.NomeProduto = produto?.Nome;
-                    pedidoMaterial.DataFormatada = pedidoMaterial.DataCadastro.ToString("dd/MM/yyyy");
-                }
-            }
-
-            return View(pedidoMateriais);
         }
     }
 }

@@ -2,7 +2,9 @@
 using ERPSoft.DATA.Models;
 using ERPSoft.DATA.Repositories;
 using ERPSoft.Web.Areas.Identity.Data;
+using ERPSoft.Web.Constants;
 using ERPSoft.Web.EmailSender;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +26,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Create
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Create()
         {
             var fornecedores = _repositoryFornecedor.GetAll();
@@ -72,7 +74,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Read
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Index()
         {
             var ordensServico = _repositoryOrdemServico.GetAll();
@@ -97,7 +99,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Delete
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Delete(int id)
         {
             _repositoryOrdemServico.DeleteById(id);

@@ -6,9 +6,10 @@
 
 
 <div class="d-flex justify-content-between align-items-center">
-    <h3>Produtos</h3>
+    <h3>Serviços</h3>
     <a asp-action="Create" class="bi bi-plus-circle btn btn-outline-primary">Adicionar</a>
 </div>
+<br></br>
 <table class="table">
     <thead>
         <tr>
@@ -43,8 +44,7 @@
                 @Html.DisplayFor(modelItem => item.NomeFornecedor)
             </td>
             <td style="vertical-align: middle;">
-                <a asp-action="Edit" class="bi bi-pencil-square btn btn-outline-warning" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Delete" class="bi bi-trash btn btn-outline-danger" asp-route-id="@item.Id">Deletar</a>
+                    <a asp-action="Edit" class="bi bi-pencil-square btn btn-outline-warning" asp-route-id="@item.Id">Editar</a>
             </td>
         </tr>
 }

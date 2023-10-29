@@ -4,11 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="d-flex justify-content-between align-items-center">
+    <h3>Pedidos Internos</h3>
+    <a asp-action="Create" class="bi bi-plus-circle btn btn-outline-primary">Adicionar</a>
+</div>
+<br></br>
 <table class="table">
     <thead>
         <tr>
@@ -23,9 +23,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCadastro)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NomeServico)
@@ -58,9 +55,6 @@
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataCadastro)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.NomeServico)
             </td>
             <td>
@@ -73,11 +67,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.StatusServico)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                <td style="vertical-align: middle;">
+                    <a asp-action="Edit" class="bi bi-pencil-square btn btn-outline-warning" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Delete" class="bi bi-trash btn btn-outline-danger" asp-route-id="@item.Id">Deletar</a>
+                </td>
         </tr>
 }
     </tbody>

@@ -20,6 +20,7 @@ namespace ERPSoft.Web.Controllers
 
         //--------- Create
 
+        [Authorize(Roles = Roles.Usuario)]
         public ActionResult Create()
         {
             return View();
@@ -46,7 +47,7 @@ namespace ERPSoft.Web.Controllers
 
         //--------- Read
 
-        //[Authorize(Roles = Roles.Usuario)]
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Index()
         {
             var produtos = _repositoryProduto.GetAll();
@@ -55,6 +56,7 @@ namespace ERPSoft.Web.Controllers
 
         //--------- Update
 
+        [Authorize(Roles = Roles.Usuario)]
         public ActionResult Edit(int id)
         {
             var produto = _repositoryProduto.GetById(id);
@@ -66,6 +68,7 @@ namespace ERPSoft.Web.Controllers
         {
             if (ModelState.IsValid) 
             {
+                produto.PrecoTotal = produto.EstoqueAtual * produto.Preco;
                 _repositoryProduto.Update(produto);
                 return RedirectToAction("Index");
             }
@@ -76,7 +79,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Delete
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Delete(int id)
         {
             _repositoryProduto.DeleteById(id);

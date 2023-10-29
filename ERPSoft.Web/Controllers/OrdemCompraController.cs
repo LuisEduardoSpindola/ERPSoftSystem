@@ -10,6 +10,8 @@ using System.Net.Mail;
 using System.Net;
 using System.Web.Helpers;
 using ERPSoft.DATA.Migrations;
+using Microsoft.AspNetCore.Authorization;
+using ERPSoft.Web.Constants;
 
 namespace ERPSoft.Web.Controllers
 {
@@ -28,7 +30,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Create
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Create()
         {
             var fornecedores = _repositoryFornecedor.GetAll();
@@ -76,7 +78,7 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Read
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Index()
         {
             var ordensCompra = _repositoryOrdemCompra.GetAll();
@@ -100,28 +102,12 @@ namespace ERPSoft.Web.Controllers
         }
 
         //--------- Delete
-
+        [Authorize(Roles = Roles.Usuario)]
         public IActionResult Delete(int id)
         {
             _repositoryOrdemCompra.DeleteById(id);
             return RedirectToAction("Index");
         }
-
-        //---- Sende Email
-
-        //public IActionResult SendEmail(string Email)
-        //{
-        //    try
-        //    {
-        //        var enviarEmail = new EnviarEmail(Email);
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ViewBag.ErrorMessage = "Ocorreu um erro ao enviar o e-mail: " + ex.Message;
-        //        return View("Error");
-        //    }
-        //}
 
     }
 }

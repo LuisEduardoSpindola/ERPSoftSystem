@@ -5,7 +5,7 @@
 namespace ERPSoft.DATA.Migrations
 {
     /// <inheritdoc />
-    public partial class FornecedorRetried : Migration
+    public partial class BaseServices : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
